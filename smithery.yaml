@@ -1,3 +1,11 @@
+name: mcp-monday
+description: Monday.com MCP Server for managing boards, items, and workspaces
+
+# Build configuration
+build:
+  dockerfile: Dockerfile
+  context: .
+
 # Smithery.ai configuration
 startCommand:
   type: stdio
@@ -8,11 +16,12 @@ startCommand:
       mondayToken:
         type: "string"
         description: "Monday.com API token"
-  commandFunction:
-    # A function that produces the CLI command to start the MCP on stdio.
-    |-
+  commandFunction: |-
     (config) => ({
-      command: "node",
-      args: ["build/index.js", config.mondayToken],
-      env: {}
+      "command": "node",
+      "args": [
+        "build/index.js",
+        config.mondayToken
+      ],
+      "env": {}
     })
