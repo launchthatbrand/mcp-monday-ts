@@ -33,10 +33,6 @@ class MondayServer {
 const server = new Server({
     name: "monday-server",
     version: "0.1.0",
-}, {
-    capabilities: {
-        tools: {},
-    },
 });
 const mondayServer = new MondayServer();
 // Get API key from command line arguments
