@@ -1,50 +1,18 @@
-name: mcp-monday
-description: Monday.com MCP Server for managing boards, items, and workspaces
-
-# Build configuration
-build:
-  dockerfile: Dockerfile
-  context: .
-
-# Environment variables required for the service
-env:
-  - name: MONDAY_API_TOKEN
-    secret: true
-  - name: MONDAY_API_URL
-    value: "https://api.monday.com/v2"
-
-# Resource limits
-resources:
-  cpu: 0.5
-  memory: 512Mi
-
-# Health check configuration
-health:
-  path: /health
-  port: 3000
-  initialDelaySeconds: 10
-  periodSeconds: 30
-
-# Scale configuration
-scale:
-  min: 1
-  max: 3
-  targetCPUUtilizationPercentage: 80
-
 # Smithery.ai configuration
-type: stdio
-configSchema:
-  type: "object"
-  required: ["mondayToken"]
-  properties:
-    mondayToken:
-      type: "string"
-      description: "Monday.com API token for authentication"
-      pattern: "^[a-zA-Z0-9_.-]+$"
-      minLength: 32
-commandFunction: |-
-  (config) => ({
-    command: "node",
-    args: ["build/index.js", config.mondayToken],
-    env: {}
-  })
+startCommand:
+  type: stdio
+  configSchema:
+    type: "object"
+    required: ["mondayToken"]
+    properties:
+      mondayToken:
+        type: "string"
+        description: "Monday.com API token"
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: "node",
+      args: ["build/index.js", config.mondayToken],
+      env: {}
+    })
