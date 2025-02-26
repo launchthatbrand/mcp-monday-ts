@@ -111,6 +111,14 @@ MCP Server for the Monday.com API, enabling board management, item creation, wor
 3. Generate a new API token with appropriate permissions
 4. Copy the generated token
 
+### Installing via Smithery
+
+To install Monday.com MCP - Typescript for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@launchthatbrand/mcp-monday-ts):
+
+```bash
+npx -y @smithery/cli install @launchthatbrand/mcp-monday-ts --client claude
+```
+
 ### Usage with Claude Desktop
 
 Add the following to your `claude_desktop_config.json`:
