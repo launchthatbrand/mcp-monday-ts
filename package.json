@@ -5,7 +5,7 @@
   "type": "module",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "start": "node build/index.js",
     "test": "npx @modelcontextprotocol/inspector node build/index.js eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjMxMjE2MjAwMywiYWFpIjoxMSwidWlkIjo1NDU2NjY4OSwiaWFkIjoiMjAyNC0wMS0xOVQxNToyNjozNi4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTEwNzA0OTksInJnbiI6InVzZTEifQ.HQ1IHjnaQFf-GBJTlhRDAE0M1dl_hUFlSgO5qEVaaKg",
     "dev": "ts-node-esm index.ts"
